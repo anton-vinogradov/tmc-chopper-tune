@@ -14,7 +14,7 @@ Why is it needed?
 ### The method of semi-automatic calibration of driver parameters is based on Trinamic’s [manual](https://www.analog.com/en/app-notes/AN-001.html) for “behavioral” motor tuning.
 ### 1. Install the calibration script on the printer host. (the klipper will reboot!)
 ```
-cd ~ && git clone https://github.com/anton-vinogradov/tmc-chopper-tuner && bash ./tmc-chopper-tuner/install.sh
+cd ~ && git clone https://github.com/anton-vinogradov/tmc-chopper-tune && bash ./tmc-chopper-tune/install.sh
 ```
 
 2. Connect the accelerometer to the motor by screwing it in, this guarantees accurate vibration measurement.
