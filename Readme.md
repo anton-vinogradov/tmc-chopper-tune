@@ -16,6 +16,10 @@ Why is it needed?
 ```
 cd ~ && git clone https://github.com/anton-vinogradov/tmc-chopper-tune && bash ./tmc-chopper-tune/install.sh
 ```
+or reinstall with 
+```
+cd ~ && bash ./tmc-chopper-tune/uninstall.sh && git clone https://github.com/anton-vinogradov/tmc-chopper-tune && bash ./tmc-chopper-tune/install.sh
+```
 
 2. Connect the accelerometer to the motor by screwing it in, this guarantees accurate vibration measurement.
    However, it is possible to connect, as for example when measuring resonances, for input_shaper - to the print head / bed, depending on the type of printer, to collect vibrations.
