@@ -74,4 +74,4 @@ sudo apt-get install libatlas-base-dev libopenblas-dev
 python -m venv .venv
 source .venv/bin/activate
 
-pip install -r wiki/requirements.txt
+pip install -r requirements.txt
