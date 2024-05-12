@@ -1,5 +1,5 @@
-### The method of semi-automatic calibration of driver parameters is based on Trinamic’s [manual](https://www.analog.com/en/app-notes/AN-001.html) for “behavioral” motor tuning.
-### 1. Install the calibration script on the printer host. (the klipper will reboot!)
+The method of semi-automatic calibration of driver parameters is based on Trinamic’s [manual](https://www.analog.com/en/app-notes/AN-001.html) for “behavioral” motor tuning.
+1. Install the calibration script on the printer host. (the klipper will reboot!)
 ```
 cd ~ && git clone https://github.com/anton-vinogradov/tmc-chopper-tune && bash ./tmc-chopper-tune/install.sh
 ```
@@ -8,12 +8,11 @@ or reinstall with
 cd ~ && bash ./tmc-chopper-tune/uninstall.sh || true && git clone https://github.com/anton-vinogradov/tmc-chopper-tune && bash ./tmc-chopper-tune/install.sh
 ```
 
-2. Connect the accelerometer to the motor by screwing it in, this guarantees accurate vibration measurement.
-   However, it is possible to connect, as for example when measuring resonances, for input_shaper - to the print head / bed, depending on the type of printer, to collect vibrations.
-   This method may give incorrect data if the mechanics are crooked, but on properly assembled printers, it is not inferior to the first.
+2. [Connect the accelerometer](https://www.klipper3d.org/Measuring_Resonances.html) to the printing head by screwing it in.
 
-3. Calibration: (Further commands in this article will be interpreted with the minimum required parameters, all supported are listed at the bottom of the manual).
-    1. We determine the resonant speeds by entering the command `TMC_CHOPPER_TUNE FIND_VIBRATIONS=1` into the web terminal.
+3. Determine the current vibrations by calling `TMC_CHOPPER_TUNE FIND_VIBRATIONS=1`.
+4. 
+
     2. After the macro is completed, the algorithm will automatically generate a table of data and graphics, place them in the `.../adxl_results/chopper_magnitude/` directory, download and open `interactive_plot_*.html`, and see the following picture -
        ![](/pictures/img_1.png)
        The graph will usually show 2 peaks, at a speed of about 50mm/s and 100mm/s - these are resonant speeds, we need the lowest of these speeds, for example, 55mm/s.
