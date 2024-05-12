@@ -66,9 +66,10 @@ The values `'default'` in parameters mean that if there is no argument, this var
 9. `FIND_VIBRATIONS` - mode for measuring vibrations from speed, useful in order to remove resonant speeds from everyday printing, as for step 3.1 of this article, applies registers from printer configuration. Values - `(True / False), (1 / 0)`
 10. `RUN_PLOTTER` - run the graph generation script. Values - `(True / False), (1 / 0)`
 
-## TMC 2130 [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2130_datasheet_rev1.15.pdf) Klipper [configuration](https://www.klipper3d.org/Config_Reference.html#tmc2130)
-## TMC 2208 [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2202_TMC2208_TMC2224_datasheet_rev1.14.pdf) Klipper configuration [configuration](https://www.klipper3d.org/Config_Reference.html#tmc2208)
-## TMC 2209 [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2209_datasheet_rev1.09.pdf) Klipper configuration [configuration](https://www.klipper3d.org/Config_Reference.html#tmc2209)
-## TMC 2660 [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2660C_Datasheet_Rev1.01.pdf) Klipper configuration [configuration](https://www.klipper3d.org/Config_Reference.html#tmc2660)
-## TMC 2240 [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/tmc2240_datasheet.pdf) Klipper configuration [configuration](https://www.klipper3d.org/Config_Reference.html#tmc2240)
-## TMC 5160 [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC5160A_datasheet_rev1.17.pdf) Klipper configuration [configuration](https://www.klipper3d.org/Config_Reference.html#tmc5160)
+## Datasheets
+- TMC 2130 [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2130_datasheet_rev1.15.pdf) Klipper [configuration](https://www.klipper3d.org/Config_Reference.html#tmc2130)
+- TMC 2208 [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2202_TMC2208_TMC2224_datasheet_rev1.14.pdf) Klipper configuration [configuration](https://www.klipper3d.org/Config_Reference.html#tmc2208)
+- TMC 2209 [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2209_datasheet_rev1.09.pdf) Klipper [configuration](https://www.klipper3d.org/Config_Reference.html#tmc2209)
+- TMC 2660 [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2660C_Datasheet_Rev1.01.pdf) Klipper [configuration](https://www.klipper3d.org/Config_Reference.html#tmc2660)
+- TMC 2240 [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/tmc2240_datasheet.pdf) Klipper [configuration](https://www.klipper3d.org/Config_Reference.html#tmc2240)
+- TMC 5160 [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC5160A_datasheet_rev1.17.pdf) Klipper [configuration](https://www.klipper3d.org/Config_Reference.html#tmc5160)
