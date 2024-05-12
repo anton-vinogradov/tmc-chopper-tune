@@ -13,7 +13,7 @@ cd ~ && bash ./tmc-chopper-tune/uninstall.sh || true && git clone https://github
    This method may give incorrect data if the mechanics are crooked, but on properly assembled printers, it is not inferior to the first.
 
 3. Calibration: (Further commands in this article will be interpreted with the minimum required parameters, all supported are listed at the bottom of the manual).
-    1. We determine the resonant speeds by entering the command `CHOPPER_TUNE FIND_VIBRATIONS=1` into the web terminal.
+    1. We determine the resonant speeds by entering the command `TMC_CHOPPER_TUNE FIND_VIBRATIONS=1` into the web terminal.
     2. After the macro is completed, the algorithm will automatically generate a table of data and graphics, place them in the `.../adxl_results/chopper_magnitude/` directory, download and open `interactive_plot_*.html`, and see the following picture -
        ![](/pictures/img_1.png)
        The graph will usually show 2 peaks, at a speed of about 50mm/s and 100mm/s - these are resonant speeds, we need the lowest of these speeds, for example, 55mm/s.
