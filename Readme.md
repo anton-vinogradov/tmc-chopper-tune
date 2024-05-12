@@ -1,5 +1,8 @@
+## Tune your TMC :)
+
 The method of semi-automatic calibration of driver parameters is based on Trinamic’s [manual](https://www.analog.com/en/app-notes/AN-001.html) for “behavioral” motor tuning.
-1. Install the calibration script on the printer host. (the klipper will reboot!)
+### Installation
+Install the calibration script on the printer host. (the klipper will reboot!)
 ```
 cd ~ && git clone https://github.com/anton-vinogradov/tmc-chopper-tune && bash ./tmc-chopper-tune/install.sh
 ```
@@ -7,10 +10,11 @@ or reinstall with
 ```
 cd ~ && bash ./tmc-chopper-tune/uninstall.sh || true && git clone https://github.com/anton-vinogradov/tmc-chopper-tune && bash ./tmc-chopper-tune/install.sh
 ```
+### Hardware configuration
+[Connect the accelerometer](https://www.klipper3d.org/Measuring_Resonances.html) to the printing head by screwing it in.
 
-2. [Connect the accelerometer](https://www.klipper3d.org/Measuring_Resonances.html) to the printing head by screwing it in.
-
-3. Determine the current vibrations by calling `TMC_CHOPPER_CHECK`.
+### Measurement
+Determine the current vibrations by calling `TMC_CHOPPER_CHECK`.
 
 #
 #
