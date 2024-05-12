@@ -18,7 +18,7 @@ cd ~ && git clone https://github.com/anton-vinogradov/tmc-chopper-tune && bash .
 ```
 or reinstall with 
 ```
-cd ~ && bash ./tmc-chopper-tune/uninstall.sh && git clone https://github.com/anton-vinogradov/tmc-chopper-tune && bash ./tmc-chopper-tune/install.sh
+cd ~ && bash ./tmc-chopper-tune/uninstall.sh || true && git clone https://github.com/anton-vinogradov/tmc-chopper-tune && bash ./tmc-chopper-tune/install.sh
 ```
 
 2. Connect the accelerometer to the motor by screwing it in, this guarantees accurate vibration measurement.
