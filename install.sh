@@ -1,5 +1,5 @@
 #!/bin/bash
-repo=chopper-resonance-tuner
+repo=tmc-chopper-tuner
 script_path=$(realpath $(echo $0))
 repo_path=$(dirname $script path)
 
