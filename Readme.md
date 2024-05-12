@@ -12,17 +12,13 @@ cd ~ && bash ./tmc-chopper-tune/uninstall.sh || true && git clone https://github
 
 3. Determine the current vibrations by calling `TMC_CHOPPER_CHECK`.
 
-
-
-
-
-
-
-
-
-
-
-
+#
+#
+#
+#
+#
+#
+#
 
     2. After the macro is completed, the algorithm will automatically generate a table of data and graphics, place them in the `.../adxl_results/chopper_magnitude/` directory, download and open `interactive_plot_*.html`, and see the following picture -
        ![](/pictures/img_1.png)
