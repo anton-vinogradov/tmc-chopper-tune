@@ -10,7 +10,7 @@ cd ~ && bash ./tmc-chopper-tune/uninstall.sh || true && git clone https://github
 
 2. [Connect the accelerometer](https://www.klipper3d.org/Measuring_Resonances.html) to the printing head by screwing it in.
 
-3. Determine the current vibrations by calling `TMC_CHOPPER_TUNE FIND_VIBRATIONS=1`.
+3. Determine the current vibrations by calling `TMC_CHOPPER_CHECK`.
 4. 
 
     2. After the macro is completed, the algorithm will automatically generate a table of data and graphics, place them in the `.../adxl_results/chopper_magnitude/` directory, download and open `interactive_plot_*.html`, and see the following picture -
