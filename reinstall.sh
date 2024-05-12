@@ -1,7 +1,7 @@
 #!/bin/bash
 repo=tmc-chopper-tune
 
-rm -fr ./$repo -y
-rm -fr ~/printer_data/config/adxl_results -y
+rm -fr ./$repo
+rm -fr ~/printer_data/config/adxl_results
 
 bash install.sh
