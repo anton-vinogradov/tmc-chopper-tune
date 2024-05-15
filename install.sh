@@ -1,9 +1,7 @@
 #!/bin/bash
 repo=tmc-chopper-tune
 script_path=$(realpath $(echo $0))
-repo_path=$(dirname $script path)
-
-cd $repo || exit 1
+repo_path=$(dirname $script_path)
 
 # Not a root check
 if [ "$(id -u)" = "0" ]; then
@@ -71,7 +69,7 @@ fi
 sudo apt update
 sudo apt-get install libatlas-base-dev libopenblas-dev
 
-python -m venv .venv
-source .venv/bin/activate
+python -m venv --system-site-packages $repo_path/.venv
+source $repo_path/.venv/bin/activate
 
-pip install -r requirements.txt
+pip install -r $repo_path/requirements.txt
