@@ -1,7 +1,7 @@
 ## Tune your TMC :)
 
 ### Installation
-Install the calibration script. (the klipper will reboot!)
+Install
 ```
 cd ~ && git clone https://github.com/anton-vinogradov/tmc-chopper-tune && bash ./tmc-chopper-tune/install.sh
 ```
@@ -9,6 +9,7 @@ or reinstall with
 ```
 cd ~ && bash ./tmc-chopper-tune/uninstall.sh || true && git clone https://github.com/anton-vinogradov/tmc-chopper-tune && bash ./tmc-chopper-tune/install.sh
 ```
+the calibration script. (the klipper will reboot!)
 ### Hardware configuration
 [Connect the accelerometer](https://www.klipper3d.org/Measuring_Resonances.html) to the printing head by screwing it in.
 
