@@ -2,16 +2,6 @@
 ####################################
 ###### CHOPPER REGISTERS TUNE ######
 ####################################
-# Written by @altzbox @mrx8024
-# @version: 1.2
-
-# CHANGELOG:
-#   v1.0: first version of the script, data sort, collection, graph generation
-#   v1.1: add support any accelerometers, find vibr mode, smart work area, auto-install,
-#   auto-import export, out nametags(acc+drv+sr+date), cleaner data
-#   v1.2: rethinking motion calculation & measurements
-
-# These changes describe the operation of the entire system, not a specific file.
 
 import os
 #################################################################################################################
