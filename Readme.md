@@ -1,6 +1,5 @@
 ## Tune your TMC :)
 
-The method of semi-automatic calibration of driver parameters is based on Trinamic’s [manual](https://www.analog.com/en/app-notes/AN-001.html) for “behavioral” motor tuning.
 ### Installation
 Install the calibration script on the printer host. (the klipper will reboot!)
 ```
