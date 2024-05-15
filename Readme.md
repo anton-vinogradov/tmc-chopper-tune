@@ -1,7 +1,7 @@
 ## Tune your TMC :)
 
 ### Installation
-Install the calibration script on the printer host. (the klipper will reboot!)
+Install the calibration script. (the klipper will reboot!)
 ```
 cd ~ && git clone https://github.com/anton-vinogradov/tmc-chopper-tune && bash ./tmc-chopper-tune/install.sh
 ```
