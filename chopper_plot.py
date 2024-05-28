@@ -73,10 +73,7 @@ def main():
                 for hend in range(args.get('hend_min'), args.get('hend_max') + 1):
                     if hstrt + hend <= args.get('hstrt_hend_max'):
                         for speed in range(args.get('min_speed'), args.get('max_speed') + 1):
-                            freq = float(round(1/(2*(12+32*toff)*1/(1000000*fclk)+2*1/(1000000*fclk)*16*(1.5**tbl))/1000, 1))
-                            parameters = (f'tbl={tbl}_toff={toff}_hstrt={hstrt}'
-                                          f'_hend={hend}_speed={speed}_freq={freq}kHz')
-                            parameters_list.append(parameters)
+                            parameters_list.append(f'tbl={tbl}_toff={toff}_hstrt={hstrt}_hend={hend}_speed={speed}')
 
     # Check input count csvs
     if len(csv_files) != len(parameters_list):
