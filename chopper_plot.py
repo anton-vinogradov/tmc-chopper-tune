@@ -104,7 +104,7 @@ def main():
         datapoint.append(md_magnitude)
 
         if len(datapoint) == iterations:
-            toff = int(parameters.split('_')[2].split('=')[1])
+            toff = int(parameters.split('_')[1].split('=')[1])
             results.append({'file_name': csv_file, 'median magnitude': np.mean(datapoint),
                             'parameters': parameters, 'color': toff})
             datapoint = []
