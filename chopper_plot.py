@@ -68,18 +68,17 @@ def main():
     csv_files = sorted(csv_files)
     parameters_list = []
 
-    for current in range(args.get('current_min_ma'), args.get('current_max_ma') + 1, args.get('current_change_step')):
-        for tbl in range(args.get('tbl_min'), args.get('tbl_max') + 1):
-            for toff in range(args.get('toff_min'), args.get('toff_max') + 1):
-                for hstrt in range(args.get('hstrt_min'), args.get('hstrt_max') + 1):
-                    for hend in range(args.get('hend_min'), args.get('hend_max') + 1):
-                        if hstrt + hend <= args.get('hstrt_hend_max'):
-                            for speed in range(args.get('min_speed'), args.get('max_speed') + 1):
-                                for _ in range(iterations):
-                                    freq = float(round(1/(2*(12+32*toff)*1/(1000000*fclk)+2*1/(1000000*fclk)*16*(1.5**tbl))/1000, 1))
-                                    parameters = (f'current={current}_tbl={tbl}_toff={toff}_hstrt={hstrt}'
-                                                  f'_hend={hend}_speed={speed}_freq={freq}kHz')
-                                    parameters_list.append(parameters)
+    for tbl in range(args.get('tbl_min'), args.get('tbl_max') + 1):
+        for toff in range(args.get('toff_min'), args.get('toff_max') + 1):
+            for hstrt in range(args.get('hstrt_min'), args.get('hstrt_max') + 1):
+                for hend in range(args.get('hend_min'), args.get('hend_max') + 1):
+                    if hstrt + hend <= args.get('hstrt_hend_max'):
+                        for speed in range(args.get('min_speed'), args.get('max_speed') + 1):
+                            for _ in range(iterations):
+                                freq = float(round(1/(2*(12+32*toff)*1/(1000000*fclk)+2*1/(1000000*fclk)*16*(1.5**tbl))/1000, 1))
+                                parameters = (f'tbl={tbl}_toff={toff}_hstrt={hstrt}'
+                                              f'_hend={hend}_speed={speed}_freq={freq}kHz')
+                                parameters_list.append(parameters)
 
     # Check input count csvs
     if len(csv_files) != len(parameters_list):
