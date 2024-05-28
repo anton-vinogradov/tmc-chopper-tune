@@ -123,7 +123,7 @@ def main():
                                  orientation='h', showlegend=False))
         fig.update_layout(title='Median Magnitude vs Parameters', xaxis_title='Median Magnitude',
                           yaxis_title='Parameters', coloraxis_showscale=True)
-        plot_html_path = os.path.join(RESULTS_FOLDER, f'{name}interactive_plot_{accelerometer}_tmc{driver}_{sense_resistor}_{current_date}.html')
+        plot_html_path = os.path.join(RESULTS_FOLDER, f'{name}interactive_plot_{accelerometer}_tmc{driver}_{current_date}.html')
         pio.write_html(fig, plot_html_path, auto_open=False)
         if parameters_list[0].split('_')[6].split('=')[1] != parameters_list[1].split('_')[6].split('=')[1]:
             break
