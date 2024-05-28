@@ -56,7 +56,6 @@ def main():
     args = parse_arguments()
     accelerometer = args.get('accel_chip')
     driver = args.get('driver')
-    iterations = args.get('iterations')
     current_date = datetime.now().strftime('%Y%m%d_%H%M%S')
     csv_files, target_file = [], ''
     for f in os.listdir(DATA_FOLDER):
@@ -74,11 +73,10 @@ def main():
                 for hend in range(args.get('hend_min'), args.get('hend_max') + 1):
                     if hstrt + hend <= args.get('hstrt_hend_max'):
                         for speed in range(args.get('min_speed'), args.get('max_speed') + 1):
-                            for _ in range(iterations):
-                                freq = float(round(1/(2*(12+32*toff)*1/(1000000*fclk)+2*1/(1000000*fclk)*16*(1.5**tbl))/1000, 1))
-                                parameters = (f'tbl={tbl}_toff={toff}_hstrt={hstrt}'
-                                              f'_hend={hend}_speed={speed}_freq={freq}kHz')
-                                parameters_list.append(parameters)
+                            freq = float(round(1/(2*(12+32*toff)*1/(1000000*fclk)+2*1/(1000000*fclk)*16*(1.5**tbl))/1000, 1))
+                            parameters = (f'tbl={tbl}_toff={toff}_hstrt={hstrt}'
+                                          f'_hend={hend}_speed={speed}_freq={freq}kHz')
+                            parameters_list.append(parameters)
 
     # Check input count csvs
     if len(csv_files) != len(parameters_list):
@@ -90,7 +88,6 @@ def main():
     # Binding magnitude on registers
     results = []
     static = calculate_static_measures(os.path.join(DATA_FOLDER, target_file))
-    datapoint = []
     for csv_file, parameters in tqdm(zip(csv_files, parameters_list), desc='Processing CSV files', total=len(csv_files)):
         file_path = os.path.join(DATA_FOLDER, csv_file)
         with open(file_path, 'r') as file:
@@ -101,13 +98,10 @@ def main():
         trim_size = len(data) // CUTOFF_RANGE
         data = data[trim_size:-trim_size]
         md_magnitude = np.median([np.linalg.norm(row) for row in data])
-        datapoint.append(md_magnitude)
 
-        if len(datapoint) == iterations:
-            toff = int(parameters.split('_')[1].split('=')[1])
-            results.append({'file_name': csv_file, 'median magnitude': np.mean(datapoint),
-                            'parameters': parameters, 'color': toff})
-            datapoint = []
+        toff = int(parameters.split('_')[1].split('=')[1])
+        results.append({'file_name': csv_file, 'median magnitude': md_magnitude,
+                        'parameters': parameters, 'color': toff})
 
     # Graphs generation
     colors = ['', '#2F4F4F', '#12B57F', '#9DB512', '#DF8816', '#1297B5', '#5912B5', '#B51284', '#127D0C']
