@@ -114,8 +114,6 @@ def main():
                           yaxis_title='Parameters', coloraxis_showscale=True)
         plot_html_path = os.path.join(RESULTS_FOLDER, f'{name}interactive_plot_{accelerometer}_tmc{driver}_{current_date}.html')
         pio.write_html(fig, plot_html_path, auto_open=False)
-        if parameters_list[0].split('_')[5].split('=')[1] != parameters_list[1].split('_')[5].split('=')[1]:
-            break
 
     # Export Info
     try: print(f'Access to interactive plot at: {"/".join(plot_html_path.split("/")[:-1] + [plot_html_path.split(names[1])[1]])}')
