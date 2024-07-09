@@ -71,7 +71,7 @@ def main():
         for toff in range(args.get('toff_min'), args.get('toff_max') + 1):
             for hstrt in range(args.get('hstrt_min'), args.get('hstrt_max') + 1):
                 for hend in range(args.get('hend_min'), args.get('hend_max') + 1):
-                    if hstrt + hend <= args.get('hstrt_hend_max'):
+                    if hstrt + hend <= 16:
                         for speed in range(args.get('min_speed'), args.get('max_speed') + 1):
                             parameters_list.append(f'tbl={tbl}_toff={toff}_hstrt={hstrt}_hend={hend}_speed={speed}')
 
