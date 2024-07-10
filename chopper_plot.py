@@ -50,6 +50,9 @@ def process():
                 # frequency bins (the same bins for X, Y, and Z)
                 helper = shaper_calibrate.ShaperCalibrate(printer=None)
 
+                df = pandas.DataFrame(data[:, 1])
+                df.to_csv(RESULTS_FOLDER + "/r.csv")
+
                 fx, px = helper._psd(data[:, 1], freq, m)
                 fy, py = helper._psd(data[:, 2], freq, m)
                 fx, pz = helper._psd(data[:, 3], freq, m)
