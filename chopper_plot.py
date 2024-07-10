@@ -28,9 +28,9 @@ def clean():
 
 def process():
     res = []
-    for csv_file in os.listdir(DATA_FOLDER):
-        if csv_file.endswith('.csv'):
-            file_path = os.path.join(DATA_FOLDER, csv_file)
+    for file_name in os.listdir(DATA_FOLDER):
+        if file_name.endswith('.csv'):
+            file_path = os.path.join(DATA_FOLDER, file_name)
             with open(file_path, 'r') as file:
                 data = np.array([[float(row["time"]),
                                   float(row["accel_x"]),
@@ -51,7 +51,7 @@ def process():
                 py = shaper_calibrate._psd(data[:, 2], freq, m)
                 pz = shaper_calibrate._psd(data[:, 3], freq, m)
 
-                res.append([csv_file, px.mean(), py.mean(), pz.mean()])
+                res.append([file_name, px.mean(), py.mean(), pz.mean()])
 
     df = pandas.DataFrame(res)
     df.to_csv(RESULTS_FOLDER + "/res.csv")
