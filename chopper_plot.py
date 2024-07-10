@@ -1,25 +1,59 @@
-#!/usr/bin/env python3
-####################################
-###### CHOPPER REGISTERS TUNE ######
-####################################
-
+import csv
+import importlib
 import os
 import sys
-import csv
+from datetime import datetime
+
 import numpy as np
-from tqdm import tqdm
+import pandas
 import plotly.graph_objects as go
 import plotly.io as pio
-from datetime import datetime
+from tqdm import tqdm
 
 RESULTS_FOLDER = os.path.expanduser('~/printer_data/config/adxl_results/chopper_magnitude')
 DATA_FOLDER = '/tmp'
 CUTOFF_RANGE = 5
+WINDOW_T_SEC = 0.5
 
 
-def cleaner():
+def setup_klipper_import():
+    global shaper_calibrate
+    sys.path.append(os.path.join('~/klipper', 'klippy'))
+    shaper_calibrate = importlib.import_module('.shaper_calibrate', 'extras')
+
+
+def clean():
     os.system('rm -f /tmp/*.csv')
-    sys.exit(0)
+
+
+def process():
+    res = []
+    for f in os.listdir(DATA_FOLDER):
+        if f.endswith('.csv'):
+            with open(f, 'r') as file:
+                data = np.array([[float(row["time"]),
+                                  float(row["accel_x"]),
+                                  float(row["accel_y"]),
+                                  float(row["accel_z"])] for row in csv.DictReader(file)])
+                ln = len(data)
+                data = data[ln / 2:-ln / 4]
+
+                n = data.shape[0]
+                t = data[-1, 0] - data[0, 0]
+                freq = n / t
+                # Round up to the nearest power of 2 for faster FFT
+                m = 1 << int(freq * WINDOW_T_SEC - 1).bit_length()
+
+                # Calculate PSD (power spectral density) of vibrations per
+                # frequency bins (the same bins for X, Y, and Z)
+                px = shaper_calibrate._psd(data[:, 1], freq, m)
+                py = shaper_calibrate._psd(data[:, 2], freq, m)
+                pz = shaper_calibrate._psd(data[:, 3], freq, m)
+
+                res.append([f, px.mean(), py.mean(), pz.mean()])
+
+    df = pandas.DataFrame(res)
+    df.to_csv(RESULTS_FOLDER + "/res.csv")
 
 
 def check_export_path(path):
@@ -121,7 +155,10 @@ def main():
 
 
 if __name__ == '__main__':
-    if sys.argv[1] == 'cleaner':
-        cleaner()
-    check_export_path(RESULTS_FOLDER)
-    main()
+    if sys.argv[1] == 'clean':
+        clean()
+    elif sys.argv[1] == 'process':
+        process()
+    else:
+        check_export_path(RESULTS_FOLDER)
+        main()
