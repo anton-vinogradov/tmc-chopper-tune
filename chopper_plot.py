@@ -27,6 +27,7 @@ def clean():
 
 
 def process():
+    setup_klipper_import()
     res = []
     for file_name in os.listdir(DATA_FOLDER):
         if file_name.endswith('.csv'):
