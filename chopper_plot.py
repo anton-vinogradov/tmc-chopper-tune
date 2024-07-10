@@ -18,7 +18,7 @@ WINDOW_T_SEC = 0.5
 
 def setup_klipper_import():
     global shaper_calibrate
-    sys.path.append(os.path.join('~/klipper', 'klippy'))
+    sys.path.append(os.path.join(os.path.expanduser('~/klipper'), 'klippy'))
     shaper_calibrate = importlib.import_module('.shaper_calibrate', 'extras')
 
 
