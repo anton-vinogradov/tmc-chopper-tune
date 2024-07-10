@@ -51,7 +51,7 @@ def process():
                 py = shaper_calibrate._psd(data[:, 2], freq, m)
                 pz = shaper_calibrate._psd(data[:, 3], freq, m)
 
-                res.append([f, px.mean(), py.mean(), pz.mean()])
+                res.append([csv_file, px.mean(), py.mean(), pz.mean()])
 
     df = pandas.DataFrame(res)
     df.to_csv(RESULTS_FOLDER + "/res.csv")
