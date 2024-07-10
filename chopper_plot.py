@@ -48,9 +48,11 @@ def process():
 
                 # Calculate PSD (power spectral density) of vibrations per
                 # frequency bins (the same bins for X, Y, and Z)
-                px = shaper_calibrate._psd(data[:, 1], freq, m)
-                py = shaper_calibrate._psd(data[:, 2], freq, m)
-                pz = shaper_calibrate._psd(data[:, 3], freq, m)
+                helper = shaper_calibrate.ShaperCalibrate(printer=None)
+
+                px = helper._psd(data[:, 1], freq, m)
+                py = helper._psd(data[:, 2], freq, m)
+                pz = helper._psd(data[:, 3], freq, m)
 
                 res.append([file_name, px.mean(), py.mean(), pz.mean()])
 
