@@ -51,7 +51,7 @@ def process():
                 helper = shaper_calibrate.ShaperCalibrate(printer=None)
 
                 df = pandas.DataFrame(data[:, 1])
-                df.to_csv(RESULTS_FOLDER + "/r.csv")
+                df.to_csv(RESULTS_FOLDER + "/" + str(n) + "_" + t + "_" + freq + ".csv")
 
                 fx, px = helper._psd(data[:, 1], freq, m)
                 fy, py = helper._psd(data[:, 2], freq, m)
