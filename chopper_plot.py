@@ -32,7 +32,7 @@ def process():
         if file_name.endswith('.csv'):
             file_path = os.path.join(DATA_FOLDER, file_name)
             with open(file_path, 'r') as file:
-                data = np.array([[float(row["time"]),
+                data = np.array([[float(row["#time"]),
                                   float(row["accel_x"]),
                                   float(row["accel_y"]),
                                   float(row["accel_z"])] for row in csv.DictReader(file)])
