@@ -4,11 +4,6 @@
 ####################################
 
 import os
-#################################################################################################################
-RESULTS_FOLDER = os.path.expanduser('~/printer_data/config/adxl_results/chopper_magnitude')
-DATA_FOLDER = '/tmp'
-#################################################################################################################
-
 import sys
 import csv
 import numpy as np
@@ -17,7 +12,8 @@ import plotly.graph_objects as go
 import plotly.io as pio
 from datetime import datetime
 
-fclk = 12 # MHz
+RESULTS_FOLDER = os.path.expanduser('~/printer_data/config/adxl_results/chopper_magnitude')
+DATA_FOLDER = '/tmp'
 CUTOFF_RANGE = 5
 
 
@@ -84,7 +80,8 @@ def main():
     # Binding magnitude on registers
     results = []
     static = calculate_static_measures(os.path.join(DATA_FOLDER, target_file))
-    for csv_file, parameters in tqdm(zip(csv_files, parameters_list), desc='Processing CSV files', total=len(csv_files)):
+    for csv_file, parameters in tqdm(zip(csv_files, parameters_list), desc='Processing CSV files',
+                                     total=len(csv_files)):
         file_path = os.path.join(DATA_FOLDER, csv_file)
         with open(file_path, 'r') as file:
             data = np.array([[float(row["accel_x"]),
@@ -111,12 +108,16 @@ def main():
                                  orientation='h', showlegend=False))
         fig.update_layout(title='Median Magnitude vs Parameters', xaxis_title='Median Magnitude',
                           yaxis_title='Parameters', coloraxis_showscale=True)
-        plot_html_path = os.path.join(RESULTS_FOLDER, f'{name}interactive_plot_{accelerometer}_tmc{driver}_{current_date}.html')
+        plot_html_path = os.path.join(RESULTS_FOLDER,
+                                      f'{name}interactive_plot_{accelerometer}_tmc{driver}_{current_date}.html')
         pio.write_html(fig, plot_html_path, auto_open=False)
 
     # Export Info
-    try: print(f'Access to interactive plot at: {"/".join(plot_html_path.split("/")[:-1] + [plot_html_path.split(names[1])[1]])}')
-    except IndexError: print(f'Access to interactive plot at: {plot_html_path}')
+    try:
+        print(
+            f'Access to interactive plot at: {"/".join(plot_html_path.split("/")[:-1] + [plot_html_path.split(names[1])[1]])}')
+    except IndexError:
+        print(f'Access to interactive plot at: {plot_html_path}')
 
 
 if __name__ == '__main__':
