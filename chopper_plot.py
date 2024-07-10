@@ -50,9 +50,9 @@ def process():
                 # frequency bins (the same bins for X, Y, and Z)
                 helper = shaper_calibrate.ShaperCalibrate(printer=None)
 
-                px = helper._psd(data[:, 1], freq, m)
-                py = helper._psd(data[:, 2], freq, m)
-                pz = helper._psd(data[:, 3], freq, m)
+                fx, px = helper._psd(data[:, 1], freq, m)
+                fy, py = helper._psd(data[:, 2], freq, m)
+                fx, pz = helper._psd(data[:, 3], freq, m)
 
                 res.append([file_name, px.mean(), py.mean(), pz.mean()])
 
