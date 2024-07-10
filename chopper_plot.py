@@ -28,9 +28,10 @@ def clean():
 
 def process():
     res = []
-    for f in os.listdir(DATA_FOLDER):
-        if f.endswith('.csv'):
-            with open(f, 'r') as file:
+    for csv_file in os.listdir(DATA_FOLDER):
+        if csv_file.endswith('.csv'):
+            file_path = os.path.join(DATA_FOLDER, csv_file)
+            with open(file_path, 'r') as file:
                 data = np.array([[float(row["time"]),
                                   float(row["accel_x"]),
                                   float(row["accel_y"]),
