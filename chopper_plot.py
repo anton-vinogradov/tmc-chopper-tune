@@ -50,14 +50,14 @@ def process():
                 # frequency bins (the same bins for X, Y, and Z)
                 helper = shaper_calibrate.ShaperCalibrate(printer=None)
 
-                df = pandas.DataFrame(data[:, 1])
-                df.to_csv("%s/%s_%s_%s.csv" % (RESULTS_FOLDER, n, t, freq))
+                # df = pandas.DataFrame(data[:, 1])
+                # df.to_csv("%s/%s_%s_%s.csv" % (RESULTS_FOLDER, n, t, freq))
 
                 fx, px = helper._psd(data[:, 1], freq, m)
                 fy, py = helper._psd(data[:, 2], freq, m)
                 fx, pz = helper._psd(data[:, 3], freq, m)
 
-                res.append([file_name, px.mean(), py.mean(), pz.mean()])
+                res.append([file_name, px, py, pz])
 
     df = pandas.DataFrame(res)
     df.to_csv(RESULTS_FOLDER + "/res.csv")
