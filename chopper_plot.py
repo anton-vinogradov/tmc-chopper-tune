@@ -169,6 +169,8 @@ if __name__ == '__main__':
         clean()
     elif sys.argv[1] == 'process':
         process()
+    elif sys.argv[1] == 'adxl_check':
+        process()
     else:
         check_export_path(RESULTS_FOLDER)
         main()
