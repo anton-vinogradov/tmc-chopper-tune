@@ -38,7 +38,7 @@ def process():
                                   float(row["accel_y"]),
                                   float(row["accel_z"])] for row in csv.DictReader(file)])
                 ln = len(data)
-                data = data[ln // 2:-ln // 4]
+                data = data[ln // 4:-ln // 4]
 
                 n = data.shape[0]
                 t = data[-1, 0] - data[0, 0]
