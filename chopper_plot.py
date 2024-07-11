@@ -46,15 +46,15 @@ def process():
                 # Round up to the nearest power of 2 for faster FFT
                 m = 1 << int(freq * WINDOW_T_SEC - 1).bit_length()
 
-                if n <= m:
-                    exit(1)
-
                 # Calculate PSD (power spectral density) of vibrations per
                 # frequency bins (the same bins for X, Y, and Z)
                 helper = shaper_calibrate.ShaperCalibrate(printer=None)
 
                 df = pandas.DataFrame(data[:, 1])
                 df.to_csv("%s/%s_%s_%s_%s.csv" % (RESULTS_FOLDER, n, t, freq, m))
+
+                if n <= m:
+                    exit(1)
 
                 fx, px = helper._psd(data[:, 1], freq, m)
                 fy, py = helper._psd(data[:, 2], freq, m)
