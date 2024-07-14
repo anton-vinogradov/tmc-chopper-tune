@@ -68,7 +68,7 @@ def process():
     # df = pandas.DataFrame(res)
     # df.to_csv(RESULTS_FOLDER + "/res.csv")
 
-    message('M118 Hallo!')
+    message('M118%20Hallo')
 
 
 def check_export_path(path):
