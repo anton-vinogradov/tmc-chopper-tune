@@ -68,7 +68,7 @@ def process():
     # df = pandas.DataFrame(res)
     # df.to_csv(RESULTS_FOLDER + "/res.csv")
 
-    message("M118 Hallo!")
+    message('M118 Hallo!')
 
 
 def check_export_path(path):
@@ -170,10 +170,10 @@ def main():
 
 
 def message(msg):
-    def task(_msg):
-        printer.send_gcode(_msg)
+    def task():
+        printer.send_gcode(msg)
 
-    thread = Thread(target=task, args=msg)
+    thread = Thread(target=task)
     thread.start()
     thread.join()
 
