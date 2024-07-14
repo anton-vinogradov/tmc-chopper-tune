@@ -3,6 +3,7 @@ import importlib
 import os
 import sys
 from datetime import datetime
+from threading import Thread
 
 import moonrakerpy as moonpy
 import numpy as np
@@ -67,7 +68,8 @@ def process():
     # df = pandas.DataFrame(res)
     # df.to_csv(RESULTS_FOLDER + "/res.csv")
 
-    printer.send_gcode('M118 Hello world')
+    message("M118 Hallo!")
+
 
 def check_export_path(path):
     if not os.path.exists(path):
@@ -165,6 +167,15 @@ def main():
             f'Access to interactive plot at: {"/".join(plot_html_path.split("/")[:-1] + [plot_html_path.split(names[1])[1]])}')
     except IndexError:
         print(f'Access to interactive plot at: {plot_html_path}')
+
+
+def message(msg):
+    def task(_msg):
+        printer.send_gcode(_msg)
+
+    thread = Thread(target=task, args=msg)
+    thread.start()
+    thread.join()
 
 
 if __name__ == '__main__':
