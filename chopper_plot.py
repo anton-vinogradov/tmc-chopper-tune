@@ -174,7 +174,7 @@ def main():
 
 def message(msg):
     def task():
-        printer.send_gcode("M118 %s") % msg
+        printer.send_gcode("M118 SSS") % msg
 
     asyncio.create_task(task())
 
