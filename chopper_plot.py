@@ -172,7 +172,7 @@ def main():
 
 def message(msg):
     def task():
-        printer.send_gcode("M118 X%s") % msg
+        printer.send_gcode("M118 %s") % msg
 
     thread = Thread(target=task)
     thread.start()
