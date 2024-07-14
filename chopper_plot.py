@@ -187,7 +187,7 @@ if __name__ == '__main__':
     elif sys.argv[1] == 'adxl_check':
         process()
     elif sys.argv[1] == 'echo':
-        echo()
+        asyncio.run(echo())
     else:
         check_export_path(RESULTS_FOLDER)
         main()
