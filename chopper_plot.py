@@ -30,6 +30,7 @@ def clean():
 
 
 def process():
+    message('M118%20Haaaaaallo')
     setup_klipper_import()
     res = []
     for file_name in os.listdir(DATA_FOLDER):
@@ -171,7 +172,7 @@ def main():
 
 def message(msg):
     def task():
-        os.system('curl http://127.0.0.1:7125/printer/gcode/script?script=' + msg)
+        os.system("curl http://127.0.0.1:7125/printer/gcode/script?script=%s" % msg)
 
     thread = Thread(target=task)
     thread.start()
