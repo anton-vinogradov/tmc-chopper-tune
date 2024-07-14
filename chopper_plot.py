@@ -15,7 +15,7 @@ RESULTS_FOLDER = os.path.expanduser('~/printer_data/config/adxl_results/chopper_
 DATA_FOLDER = '/tmp'
 CUTOFF_RANGE = 5
 WINDOW_T_SEC = 0.5
-printer = moonpy.MoonrakerPrinter('http://0.0.0.0:7125')
+printer = moonpy.MoonrakerPrinter('http://127.0.0.1:7125')
 
 
 def setup_klipper_import():
@@ -67,7 +67,7 @@ def process():
     df = pandas.DataFrame(res)
     df.to_csv(RESULTS_FOLDER + "/res.csv")
 
-    printer.send_gcode("M118 Hello world")
+    printer.send_gcode('M118 Hello world')
 
 def check_export_path(path):
     if not os.path.exists(path):
