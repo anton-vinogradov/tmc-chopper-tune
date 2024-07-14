@@ -172,7 +172,7 @@ def main():
 
 def message(msg):
     def task():
-        os.system("curl http://127.0.0.1:7125/printer/gcode/script?script=%s" % msg)
+        os.system("curl -s http://127.0.0.1:7125/printer/gcode/script?script=%s" % msg)
 
     thread = Thread(target=task)
     thread.start()
