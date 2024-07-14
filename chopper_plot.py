@@ -65,7 +65,8 @@ def process():
     df = pandas.DataFrame(res)
     df.to_csv(RESULTS_FOLDER + "/res.csv")
 
-    gcode.respond_info("Hello world")
+    gcode_helper = gcode.GCodeDispatch(printer=None)
+    gcode_helper.respond_info("Hello world")
 
 
 def check_export_path(path):
