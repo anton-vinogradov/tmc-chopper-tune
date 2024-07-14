@@ -64,8 +64,8 @@ def process():
 
                 res.append([file_name, px.mean(), py.mean(), pz.mean()])
 
-    df = pandas.DataFrame(res)
-    df.to_csv(RESULTS_FOLDER + "/res.csv")
+    # df = pandas.DataFrame(res)
+    # df.to_csv(RESULTS_FOLDER + "/res.csv")
 
     printer.send_gcode('M118 Hello world')
 
