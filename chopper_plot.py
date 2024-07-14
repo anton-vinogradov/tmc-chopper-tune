@@ -173,10 +173,8 @@ def main():
 
 
 def message(msg):
-    def task():
-        printer.send_gcode("M118 SSS") % msg
-
-    asyncio.create_task(task())
+    # printer.send_gcode("M118 SSS") % msg
+    os.system("curl 127.0.0.1:7125/printer/gcode/script?script=M118%s &" % msg)
 
 
 if __name__ == '__main__':
@@ -187,7 +185,7 @@ if __name__ == '__main__':
     elif sys.argv[1] == 'adxl_check':
         process()
     elif sys.argv[1] == 'echo':
-        asyncio.run(echo())
+        echo()
     else:
         check_export_path(RESULTS_FOLDER)
         main()
