@@ -176,7 +176,7 @@ def message(msg):
     def task():
         printer.send_gcode("M118 %s") % msg
 
-    asyncio.run(task())
+    asyncio.create_task(task())
 
 
 if __name__ == '__main__':
