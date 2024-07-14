@@ -1,3 +1,4 @@
+import asyncio
 import csv
 import importlib
 import os
@@ -175,8 +176,7 @@ def message(msg):
     def task():
         printer.send_gcode("M118 %s") % msg
 
-    thread = Thread(target=task)
-    thread.start()
+    asyncio.run(task())
 
 
 if __name__ == '__main__':
