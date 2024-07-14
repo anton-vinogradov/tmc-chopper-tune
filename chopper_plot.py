@@ -17,10 +17,10 @@ WINDOW_T_SEC = 0.5
 
 
 def setup_klipper_import():
-    global shaper_calibrate
+    global shaper_calibrate, gcode
     sys.path.append(os.path.join(os.path.expanduser('~/klipper'), 'klippy'))
     shaper_calibrate = importlib.import_module('.shaper_calibrate', 'extras')
-
+    gcode = importlib.import_module('gcode')
 
 def clean():
     os.system('rm -f /tmp/*.csv')
@@ -64,6 +64,8 @@ def process():
 
     df = pandas.DataFrame(res)
     df.to_csv(RESULTS_FOLDER + "/res.csv")
+
+    gcode.respond_info("Hello world")
 
 
 def check_export_path(path):
