@@ -30,7 +30,6 @@ def clean():
 
 
 def process():
-    message('M118%20Haaaaaallo')
     setup_klipper_import()
     res = []
     for file_name in os.listdir(DATA_FOLDER):
@@ -69,7 +68,9 @@ def process():
     # df = pandas.DataFrame(res)
     # df.to_csv(RESULTS_FOLDER + "/res.csv")
 
-    message('M118%20Hallo')
+
+def echo():
+    message('Hallo')
 
 
 def check_export_path(path):
@@ -186,6 +187,8 @@ if __name__ == '__main__':
         process()
     elif sys.argv[1] == 'adxl_check':
         process()
+    elif sys.argv[1] == 'echo':
+        echo()
     else:
         check_export_path(RESULTS_FOLDER)
         main()
