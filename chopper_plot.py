@@ -4,6 +4,7 @@ import os
 import sys
 from datetime import datetime
 
+import moonrakerpy as moonpy
 import numpy as np
 import pandas
 import plotly.graph_objects as go
@@ -14,13 +15,14 @@ RESULTS_FOLDER = os.path.expanduser('~/printer_data/config/adxl_results/chopper_
 DATA_FOLDER = '/tmp'
 CUTOFF_RANGE = 5
 WINDOW_T_SEC = 0.5
+printer = moonpy.MoonrakerPrinter('http://127.0.0.1')
 
 
 def setup_klipper_import():
-    global shaper_calibrate, gcode
+    global shaper_calibrate
     sys.path.append(os.path.join(os.path.expanduser('~/klipper'), 'klippy'))
     shaper_calibrate = importlib.import_module('.shaper_calibrate', 'extras')
-    gcode = importlib.import_module('gcode')
+
 
 def clean():
     os.system('rm -f /tmp/*.csv')
@@ -65,9 +67,7 @@ def process():
     df = pandas.DataFrame(res)
     df.to_csv(RESULTS_FOLDER + "/res.csv")
 
-    gcode_helper = gcode.GCodeDispatch(printer=None)
-    gcode_helper.respond_info("Hello world")
-
+    printer.send_gcode("M118 Hello world")
 
 def check_export_path(path):
     if not os.path.exists(path):
