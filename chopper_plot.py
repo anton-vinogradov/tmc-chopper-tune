@@ -173,7 +173,7 @@ def main():
 
 def message(msg):
     # printer.send_gcode("M118 SSS") % msg
-    os.system(urllib.parse.quote("curl -s 127.0.0.1:7125/printer/gcode/script?script=M118%s" % msg))
+    os.system("curl -s 127.0.0.1:7125/printer/gcode/script?script=M118%s" % urllib.parse.quote(msg))
 
 
 if __name__ == '__main__':
