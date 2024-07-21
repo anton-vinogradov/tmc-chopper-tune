@@ -9,6 +9,7 @@ import numpy as np
 import pandas
 import plotly.graph_objects as go
 import plotly.io as pio
+from urllib.parse import quote
 from tqdm import tqdm
 
 RESULTS_FOLDER = os.path.expanduser('~/printer_data/config/adxl_results/chopper_magnitude')
@@ -172,7 +173,7 @@ def main():
 
 def message(msg):
     # printer.send_gcode("M118 SSS") % msg
-    os.system("curl -s 127.0.0.1:7125/printer/gcode/script?script=M118%s" % msg)
+    os.system("curl -s 127.0.0.1:7125/printer/gcode/script?script=M118%s" % quote(msg))
 
 
 if __name__ == '__main__':
