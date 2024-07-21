@@ -31,7 +31,7 @@ def clean():
 
 
 def adxl_check():
-    noise = process()
+    noise = process()[1:].astype(float)
     logging.critical(noise)
     logging.critical(noise[:, 1])
     nx = noise[:, 1].mean()
