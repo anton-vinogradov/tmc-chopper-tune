@@ -175,9 +175,9 @@ def main():
 def message(msg):
     # printer.send_gcode("M118 SSS") % msg
     command = "M118%s" % msg
-    logging.info("Command='%s'" % command)
+    logging.critical("Command='%s'" % command)
     encoded = urllib.parse.urlencode(command)
-    logging.info("Encoded msg='%s'" % encoded)
+    logging.critical("Encoded msg='%s'" % encoded)
     os.system("curl -s 127.0.0.1:7125/printer/gcode/script?script=%s &" % encoded)
 
 
