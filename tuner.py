@@ -62,9 +62,6 @@ def process():
                 # frequency bins (the same bins for X, Y, and Z)
                 helper = shaper_calibrate.ShaperCalibrate(printer=None)
 
-                df = pandas.DataFrame(data[:, 1])
-                df.to_csv("%s/%s_%s_%s_%s.csv" % (RESULTS_FOLDER, n, t, freq, m))
-
                 if n <= m:
                     logging.critical("Measured data size is not enough!")
                     exit(1)
