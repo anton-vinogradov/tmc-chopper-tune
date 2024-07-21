@@ -36,7 +36,7 @@ def adxl_check():
     ny = noise[:, 1].mean()
     nz = noise[:, 2].mean()
 
-    logging.critical("Noize: x:%s y:%s z:%s" % nx, ny, nz)
+    logging.critical("Noize: x:%s y:%s z:%s" % (nx, ny, nz))
 
 def process():
     setup_klipper_import()
