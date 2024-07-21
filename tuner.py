@@ -32,6 +32,7 @@ def clean():
 
 def adxl_check():
     noise = process()
+    logging.critical(noise)
     nx = np.mean(noise, axis=0)
     ny = np.mean(noise, axis=0)
     nz = np.mean(noise, axis=0)
