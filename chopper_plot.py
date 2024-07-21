@@ -1,5 +1,6 @@
 import csv
 import importlib
+import logging
 import os
 import sys
 from datetime import datetime
@@ -173,7 +174,9 @@ def main():
 
 def message(msg):
     # printer.send_gcode("M118 SSS") % msg
-    os.system("curl -s 127.0.0.1:7125/printer/gcode/script?script=M118%s &" % urllib.parse.urlencode(msg))
+    encoded = urllib.parse.urlencode("M118%s" % msg)
+    logging.info("Encoded msg='%s'" % encoded)
+    os.system("curl -s 127.0.0.1:7125/printer/gcode/script?script=%s &" % encoded)
 
 
 if __name__ == '__main__':
