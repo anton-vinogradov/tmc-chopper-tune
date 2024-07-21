@@ -2,4 +2,4 @@
 repo=tmc-chopper-tune
 
 rm -fr ./$repo
-rm -fr ~/printer_data/config/adxl_results
+rm -fr ~/printer_data/config/tmc-chopper-tune
