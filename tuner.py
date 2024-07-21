@@ -33,7 +33,7 @@ def clean():
 def adxl_check():
     noise = process()
     logging.critical(noise)
-    logging.critical(noise[:, 1].astype(float))
+    logging.critical(noise[:, 1])
     nx = noise[:, 1].mean()
     ny = noise[:, 2].mean()
     nz = noise[:, 3].mean()
@@ -75,7 +75,7 @@ def process():
                 fy, py = helper._psd(data[:, 2], freq, m)
                 fx, pz = helper._psd(data[:, 3], freq, m)
 
-                res.append([file_name, px.mean(), py.mean(), pz.mean()])
+                res.append([file_name, float(px.mean()), float(py.mean()), float(pz.mean())])
     return np.array(res)
 
 def echo():
