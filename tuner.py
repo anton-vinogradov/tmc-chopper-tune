@@ -34,9 +34,9 @@ def adxl_check():
     noise = process()
     logging.critical(noise)
     logging.critical(noise[:, 1])
-    nx = np.mean(noise[:, 1], axis=0)
-    ny = np.mean(noise[:, 2], axis=0)
-    nz = np.mean(noise[:, 3], axis=0)
+    nx = noise[:, 1].mean()
+    ny = noise[:, 2].mean()
+    nz = noise[:, 3].mean()
 
     logging.critical("Noize: x:%s y:%s z:%s" % nx, ny, nz)
 
@@ -75,7 +75,7 @@ def process():
                 fy, py = helper._psd(data[:, 2], freq, m)
                 fx, pz = helper._psd(data[:, 3], freq, m)
 
-                res.append([file_name, float(px.mean()), float(py.mean()), float(pz.mean())])
+                res.append([file_name, px.mean(), py.mean(), pz.mean()])
     return np.array(res)
 
 def echo():
