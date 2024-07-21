@@ -27,7 +27,7 @@ else
 fi
 
 # Config hardlink
-cfg_name=tune.cfg
+cfg_name=tmc-chopper-tune.cfg
 cfg_path=~/printer_data/config/
 ln -srf "$repo_path/$cfg_name" $cfg_path
 
