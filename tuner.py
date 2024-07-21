@@ -32,8 +32,11 @@ def clean():
 
 def adxl_check():
     noise = process()
+    nx = np.mean(noise, axis=1)
+    ny = np.mean(noise, axis=1)
+    nz = np.mean(noise, axis=1)
 
-    logging.critical("Noize: ")
+    logging.critical("Noize: x:%s y:%s z:%s", nx, ny, nz)
 
 def process():
     setup_klipper_import()
@@ -63,13 +66,14 @@ def process():
                 df.to_csv("%s/%s_%s_%s_%s.csv" % (RESULTS_FOLDER, n, t, freq, m))
 
                 if n <= m:
+                    logging.critical("Measured data size is not enough!")
                     exit(1)
 
                 fx, px = helper._psd(data[:, 1], freq, m)
                 fy, py = helper._psd(data[:, 2], freq, m)
                 fx, pz = helper._psd(data[:, 3], freq, m)
 
-                res.append([file_name, px.mean(), py.mean(), pz.mean()])
+                res.append(np.array([file_name, px.mean(), py.mean(), pz.mean()]))
     return res
 
 def echo():
