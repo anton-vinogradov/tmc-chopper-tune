@@ -1,10 +1,8 @@
-import asyncio
 import csv
 import importlib
 import os
 import sys
 from datetime import datetime
-from threading import Thread
 
 import moonrakerpy as moonpy
 import numpy as np
@@ -71,8 +69,7 @@ def process():
 
 
 def echo():
-    message("Hello folks! It's me %)"
-            "Do you know what you are doing?")
+    message("Hello folks! It's me %). Do you know what you are doing?")
 
 
 def check_export_path(path):
