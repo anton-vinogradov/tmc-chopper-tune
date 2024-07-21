@@ -10,7 +10,7 @@ if [ "$(id -u)" = "0" ]; then
 fi
 
 # Result data creation
-result_folder=~/printer_data/config/adxl_results/chopper_magnitude
+result_folder=~/printer_data/config/tmc-chopper-tune
 if [ ! -d "$result_folder" ]; then
     mkdir -p "$result_folder"
     echo "Make $result_folder direction successfully complete"
@@ -27,7 +27,7 @@ else
 fi
 
 # Config hardlink
-cfg_name=tmc_chopper_tune.cfg
+cfg_name=tune.cfg
 cfg_path=~/printer_data/config/
 ln -srf "$repo_path/$cfg_name" $cfg_path
 

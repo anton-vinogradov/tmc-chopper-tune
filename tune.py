@@ -13,7 +13,7 @@ import plotly.io as pio
 import urllib.parse
 from tqdm import tqdm
 
-RESULTS_FOLDER = os.path.expanduser('~/printer_data/config/adxl_results/chopper_magnitude')
+RESULTS_FOLDER = os.path.expanduser('~/printer_data/config/tmc-chopper-tune')
 DATA_FOLDER = '/tmp'
 CUTOFF_RANGE = 5
 WINDOW_T_SEC = 0.5
@@ -29,6 +29,11 @@ def setup_klipper_import():
 def clean():
     os.system('rm -f /tmp/*.csv')
 
+
+def adxl_check():
+    noise = process()
+
+    logging.critical("Noize: ")
 
 def process():
     setup_klipper_import()
@@ -65,13 +70,10 @@ def process():
                 fx, pz = helper._psd(data[:, 3], freq, m)
 
                 res.append([file_name, px.mean(), py.mean(), pz.mean()])
-
-    # df = pandas.DataFrame(res)
-    # df.to_csv(RESULTS_FOLDER + "/res.csv")
-
+    return res
 
 def echo():
-    message("Hello folks!Do you know what you are doing?")
+    message("Hello folks! Do you know what you are doing?")
 
 
 def check_export_path(path):
@@ -185,7 +187,7 @@ if __name__ == '__main__':
     elif sys.argv[1] == 'process':
         process()
     elif sys.argv[1] == 'adxl_check':
-        process()
+        adxl_check()
     elif sys.argv[1] == 'echo':
         echo()
     else:
