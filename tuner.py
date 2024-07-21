@@ -75,8 +75,8 @@ def process():
                 fy, py = helper._psd(data[:, 2], freq, m)
                 fx, pz = helper._psd(data[:, 3], freq, m)
 
-                res.append(np.array([file_name, px.mean(), py.mean(), pz.mean()]))
-    return res
+                res.append([file_name, px.mean(), py.mean(), pz.mean()])
+    return np.array(res)
 
 def echo():
     message("Hello folks! Do you know what you are doing?")
