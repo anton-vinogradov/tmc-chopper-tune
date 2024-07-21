@@ -70,8 +70,8 @@ def process():
     # df.to_csv(RESULTS_FOLDER + "/res.csv")
 
 
-def echo():
-    message('Hallo')
+def echo(phrase):
+    message(phrase)
 
 
 def check_export_path(path):
@@ -185,7 +185,7 @@ if __name__ == '__main__':
     elif sys.argv[1] == 'adxl_check':
         process()
     elif sys.argv[1] == 'echo':
-        echo()
+        echo(sys.argv[1:])
     else:
         check_export_path(RESULTS_FOLDER)
         main()
