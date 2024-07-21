@@ -70,7 +70,8 @@ def process():
 
 
 def echo():
-    message("Hello")
+    message("Hello folks!"
+            "Do you know what you are doing?")
 
 
 def check_export_path(path):
@@ -173,7 +174,7 @@ def main():
 
 def message(msg):
     # printer.send_gcode("M118 SSS") % msg
-    os.system("curl -s 127.0.0.1:7125/printer/gcode/script?script=M118%s" % urllib.parse.urlencode(msg))
+    os.system("curl -s 127.0.0.1:7125/printer/gcode/script?script=M118%s &" % urllib.parse.urlencode(msg))
 
 
 if __name__ == '__main__':
