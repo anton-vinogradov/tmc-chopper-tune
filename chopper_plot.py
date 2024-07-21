@@ -70,8 +70,7 @@ def process():
 
 
 def echo():
-    message("""Hello folks!"
-            "Do you know what you are doing?""")
+    message("Hello folks!\nDo you know what you are doing?")
 
 
 def check_export_path(path):
